@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "1234",
-    "database": "exampledb",
+    "database": "xscript-db",
     "host": "localhost",
     "dialect": "mysql"
   },
