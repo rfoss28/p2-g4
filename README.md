@@ -3,5 +3,7 @@
 
 ## Codename: RxAlert
 
-- John Kerr git test #1
-- Ryan Foss Test #1
+- Cam Hurley git test #1
+- Jake P git test   #1
+- John Kerr git test #4
+- Ryan Foss git test #1
