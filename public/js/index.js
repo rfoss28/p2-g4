@@ -94,6 +94,29 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+//function to allow for the addition of medications
+//sets count globally so each time the add button is clicked
+//it increments properly, I then append the input field into the form
+//its a working example at least, would like to refactor
+var count =  2;
+$addMedication = $("#addMed");
+var add_medication = function() {
+ // $name = $(`placeholder="${count}"`);
+  if (count <= 5) {
+  $input = $("<input>");
+  $("#medicForm").append($input, $name);
+  console.log('count', count)
+  } else {
+    alert("You have added to many medications");
+  }
+   count++  
+};
+
+
 // Add event listeners to the submit and delete buttons
+
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$addMedication.on("click", add_medication);
+
+M.AutoInit();
