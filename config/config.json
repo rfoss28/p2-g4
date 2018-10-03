@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "1234",
-    "database": "rx_alert_db",
+    "database": "jkdev1_db",
     "host": "localhost",
     "dialect": "mysql"
   },
