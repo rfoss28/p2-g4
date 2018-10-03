@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-    var Users2meds = sequelize.define("users2meds", {
+    var Users2med = sequelize.define("users2meds", {
       user_id: DataTypes.INTEGER,
       med_id: DataTypes.INTEGER,
       users2meds_delete: DataTypes.BOOLEAN
 
     });
-    return Users2meds;
+    return Users2med;
   };
 
   // module.exports = function(sequelize, DataTypes) {
