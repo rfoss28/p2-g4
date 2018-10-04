@@ -36,17 +36,6 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-// User.belongsToMany(Role, { 
-//   as: 'Roles', 
-//   through: { model: UserRole, unique: false }, 
-//   foreignKey: 'user_id' 
-// });
-// Role.belongsToMany(User, { 
-//   as: 'Users', 
-//   through: { model: UserRole, unique: false }, 
-//   foreignKey: 'role_id' 
-// });
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
