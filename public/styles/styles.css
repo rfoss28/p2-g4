@@ -1,3 +1,20 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.medCard {
+  width: 95% !important;
+}
+
+.dataCard {
+  width: 95% !important
+}
+
+/***************************START***************/
+
+.oval {
+  width: 160px;
+  height: 80px;
+  background: #a84909;
+  border-radius: 40px;
+}

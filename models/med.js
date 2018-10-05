@@ -15,11 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         through: { model: 'UserMed', unique: false }, 
         foreignKey: 'med_id',
         targetKey: 'id'
-
       });
     };
     return Med;
   };
-
-  
-  
