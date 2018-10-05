@@ -15,6 +15,19 @@ module.exports = function(app) {
     });
   });
 
+  // get ALL USERS
+  app.get("/api/meds", function(req, res) {
+    db.med.findAll({}).then(function(dbmed) {
+      res.json(dbmed);
+    });
+  });
+
+//   db.Outlet.findAll({include: [
+//     {model:db.Product, attributes: ['id', 'name', 'nameKh']}
+//     ]}).then(function(outlets){
+//     return res.jsonp(outlets);
+// })
+
   // get specific USER
   app.get("/api/users/:id", function(req, res) {
     db.user.findAll({ where: { id: req.params.id } }).then(function(dbuser) {
@@ -33,6 +46,41 @@ module.exports = function(app) {
   app.post("/api/users", function(req, res) {
     db.user.create(req.body).then(function(dbuser) {
       res.json(dbuser);
+    });
+  });
+
+   // Create a new USER with MEDs
+   app.post("/api/usermeds", function(req, res) {
+    console.log(req.body);
+    db.user.create(req.body,{
+      include: [{
+        as: "meds",
+        model: db.med,
+        //include: [{
+        //  med_id: db.med.med_id,
+        //  med_name: db.med.med_name
+
+        //}]
+
+      }]
+
+    }).then(function(dbuser) {
+      res.json(dbuser);
+    });
+
+  });
+
+//   models.Survey.create(survey,{
+//     include:  [models.Question,{include: [models.Option]}]
+//   }).then(function() {
+// reply({success:1});
+// });
+
+  // Create a new MED
+  app.post("/api/meds", function(req, res) {
+    console.log(req.body);
+    db.med.bulkCreate(req.body).then(function(dbmed) {
+      res.json(dbmed);
     });
   });
 
