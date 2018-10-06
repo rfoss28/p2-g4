@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "1234",
-    "database": "jkdev2_db",
+    "database": "jk_mvp_db",
     "host": "localhost",
     "dialect": "mysql"
   },
