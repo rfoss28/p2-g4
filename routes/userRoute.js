@@ -3,7 +3,7 @@ var passport = require('passport')
 
 module.exports = function(app) {
   
-
+  //post to sign up for a new account. 
   app.post("/signup", function (req, res) {
     // Creating user in database
     console.log('signup', req.body)
@@ -18,17 +18,14 @@ module.exports = function(app) {
     res.redirect("/index")
   });
 
+
   app.post("/login", passport.authenticate('local'), function(req, res) {
     console.log('signin', req.body)
-
-    // res.json({
-    //   status: 'User is logged in'
-    // })
     res.redirect("/index");
   });
 
-
   app.get("/logout",  function(req, res) {
+    console.log('logging out user');
     req.logout()
     res.redirect("/");
   })

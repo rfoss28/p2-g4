@@ -1,6 +1,7 @@
 $(function () {
     console.log(`here @ authenticate.js`);
     $('#logBtn').hide();
+    //$("#proBtn").hide();
 
     //function to check if the check box has been clicked
     //if clicked is "true", then the button to enable log in will appear
@@ -13,8 +14,8 @@ $(function () {
             $('#logBtn').hide();
         }
     }
-
-
+    
+    //needs to be linked into the new form. 
     var sanatize_email = function (email) {
         //regex to make sure email input is properly inputed
         let emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -23,13 +24,14 @@ $(function () {
 
     var email_validate = function () {
         var $result = $("#result");
-        var email = $("#email").val();
+        var email = $("#signupUserName").val();
         $result.text("");
 
         if (sanatize_email(email)) {
             console.log('yes')
             $result.text(`${email}: is valid!`);
             $result.css("color", "green");
+           // $("#proBtn").show();
         } else {
             console.log('nope')
             $result.text(`${email}: invalid email`);
@@ -37,50 +39,39 @@ $(function () {
         }
     }
 
-    // var get_usr_info = function (event) {
-    //     var $email = $("#email").val();
-    //     var $password = $("passwd").val();
-    //     console.log('email', $email, 'passwd', $password);
-    //     $signIn = $("#signIn").val();
+    //function to send new user data into the database.
+    var send_new_user_post = function () {
+        $.post("/api/users", {
+            user_email: $("#signupUsername").val(),
+            user_password: $("#signupPassword").val()
+        }).then(function (data) {
+            console.log(data);
+        });
+    };
 
-    //     var userInfo = [];
 
-    //     userInfo.push($email, $password);
-    //     console.log(userInfo);
-    // }
-    // get_usr_info();
-    // //listener events
-    // var get_usr_info = function () {
-    //     var $email = $("#Email").val();
-    //     console.log('email', $email);
-    // }
-    // get_usr_info();
+    //post to send information for existing user
+    var login_existing_user = function() {
+        $.post("/api/user/:id", {
+            user_email: $("#username").val(),
+            user_password: $("#password").val()
+        }).then(function(data){
+            console.log(data);
+        });
+    };
 
-    // $("#newUser").on("submit", function(){
-    //     console.log("here");
-    //     let firstName = $("#fname").val();
-    //     let $lastName = $("#lname").val();
-    //     let $email = $("#email").val();
-    //     console.log(firstName, $lastName, $email);
-    // })
-    var firstName = $("input#fName").val();
-    var lastName  = $("input#lName").val();
+    var check_user = function(){
+        if($("#newUser")){
+            $("#proBtn").show();
+        }
+    }
 
-    // var new_user = function() {
-    //     $.post("/api/login", {
-    //         firstname: firstName,
-    //         lastName: lastName,
+    //on click events for the post requests
+    $("#existingUsr").on("click", login_existing_user);
 
-    //     }).then(function(data){
-    //         console.log(data);
-    //     })
-    // }
-
-    // $("#newUser").on("click", new_user);
-    
-
+    //on click events for buttons 
     $('.check').on("click", approve_disclaimer);
-    $("#validate").bind("click", email_validate);
+    $("#newUser").bind("click", email_validate, send_new_user_post);
 
     M.AutoInit(); // initialize all Materialize elements that req. JS
 });

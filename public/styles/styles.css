@@ -11,10 +11,17 @@
 }
 
 /***************************START***************/
+body {
+  background: url("../images/medicine.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 
-.oval {
-  width: 160px;
-  height: 80px;
-  background: #a84909;
-  border-radius: 40px;
+#discSect{
+  margin-top: 25vh !important;
+  opacity: 0.7;
+}
+
+#newUser {
+  justify-content: center;
 }
