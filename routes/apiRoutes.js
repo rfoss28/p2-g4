@@ -8,14 +8,14 @@ module.exports = function(app) {
     });
   });
 
-  // get ALL USERS
+  // get ALL USERs
   app.get("/api/users", function(req, res) {
     db.user.findAll({}).then(function(dbuser) {
       res.json(dbuser);
     });
   });
 
-  // get ALL USERS
+  // get ALL MEDs
   app.get("/api/meds", function(req, res) {
     db.med.findAll({}).then(function(dbmed) {
       res.json(dbmed);
@@ -51,8 +51,26 @@ module.exports = function(app) {
 
    // Create a new USER with MEDs
    app.post("/api/usermeds", function(req, res) {
-    console.log(req.body);
-    db.user.create(req.body,{
+    console.log(req.body.user_name);
+    console.log(req.body.Meds);
+    db.user.create(
+      req.body
+      ).then(function(user) {
+        console.log('I HAVE USER:', user);
+        return db.med.create(req.body.Meds[1])
+
+      }).then(function(med) {
+        console.log('MED IS:', med);
+        return db.user.addMed(med)
+
+      }).then(function() {
+        res.sendStatus(201);
+      }).catch(function() {
+        res.sendStatus(400);
+      }) 
+    });
+
+/*     db.user.create(req.body,{
       include: [{
         as: "meds",
         model: db.med,
@@ -66,9 +84,9 @@ module.exports = function(app) {
 
     }).then(function(dbuser) {
       res.json(dbuser);
-    });
+    }); */
 
-  });
+  
 
 //   models.Survey.create(survey,{
 //     include:  [models.Question,{include: [models.Option]}]

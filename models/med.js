@@ -11,16 +11,19 @@ module.exports = function(sequelize, DataTypes) {
       // We're saying that a Post should belong to an Author
       // A Post can't be created without an Author due to the foreign key constraint
       Med.belongsToMany(models.user, { 
-        as: 'users', 
+        // as: 'users', 
         through: { model: 'UserMed', unique: false }, 
-        foreignKey: 'med_id',
-        targetKey: 'id',
-        timestamps: false
+        // foreignKey: 'med_id',
+        // targetKey: 'id',
+        // timestamps: false
 
       });
     };
     return Med;
   };
+
+// User.belongsToMany(Bar, { through: UserPubCrawl });
+// Bar.belongsToMany(User, { through: UserPubCrawl });
 
   
   
