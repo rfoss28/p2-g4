@@ -1,9 +1,9 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/api/examples", function (req, res) {
+    db.Example.findAll({}).then(function (dbExamples) {
       res.json(dbExamples);
     });
   });
@@ -36,9 +36,10 @@ module.exports = function(app) {
   });
 
   // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/login", function (req, res) {
+    db.Example.create(req.body).then(function (dbExample) {
+      //res.json(dbExample);
+      res.redirect("/index");
     });
   });
 
@@ -85,9 +86,19 @@ module.exports = function(app) {
   });
 
   // Delete an example by id
-  app.delete("/api/users/delete/:id", function(req, res) {
-    db.user.destroy({ where: { id: req.params.id } }).then(function(dbuser) {
-      res.json(dbuser);
+
     });
   });
+
+
+
+  app.post("/api/users", function (req, res) {
+    db.user.create(req.body).then(function (dbuser) {
+      console.log('we hit it');
+      res.json(dbuser);
+      console.log(dbuser)
+    });
+  });
+
+
 };

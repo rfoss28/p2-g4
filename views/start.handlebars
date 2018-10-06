@@ -1,57 +1,77 @@
 <div class="container">
     <div class="row">
-        <div class="card blue-grey darken-1 z-depth 5">
-            <div class="card-content white-text">
-                <span class="card-title center-align">DISCLAIMER</span>
-                {{disc}}
-
-                <form action="#" class="center-align">
-                    <p>
-                        <label>
-                            <input type="checkbox" name="checkbox" class="filled-in check center-align" />
-                            <span class="white-text">agree</span>
-                        </label>
-                    </p>
-                </form>
-            </div>
-
-            {{!-- <button class="btn waves-effect waves-light col offset-s3 s6 align-right" id="logBtn" data-target="modal1"
-                type="button"> LOG IN
-            </button> --}}
-
-            <div class="center-align">
-                <button type="submit" data-target="modal1" id="logBtn" class="waves-effect waves-light truncate btn modal-trigger cyan lighten-1 btn-large ">
-                    Login</button>
-            </div>
-
-        </div>
-        <div id="modal1" class="modal">
-            <h4 class="modalHead center-align">Sign in!</h4>
-            <div class="modal-content">
-                <div class="row">
-                    <div class="col s12">
-                    <form id="signin" name="signin" method="post" action="signin">
-                        <label for="email">Email Address</label>
-                        <input class="text" name="email" type="text" />
-                        <label for="password">Password</label>
-                        <input name="password" type="password" />
-                    </form>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <a href="/index" class="modal-action modal-close waves-effect waves-red btn-flat">Submit details</a>
-            </div>
-        </div>
-
+        <h3 class="header center-align">RXReactions</h3>
     </div>
 </div>
+<!--image!-->
+
+<div class="col s12 m8 l6" id="discSect">
+    <div class="container">
+        <div class="card-title center-align" id="discBox">
+            <h4 class="center-align"> {{disc}}</h4>
+        </div>
+    </div>
+
+
+    <form action="#" class="center-align">
+        <p>
+            <label>
+                <input type="checkbox" name="checkbox" class="filled-in check center-align" />
+                <span class="white-text">Agree</span>
+            </label>
+            <button type="submit" data-target="modal1" id="logBtn" class="waves-effect waves-light truncate btn modal-trigger cyan lighten-1 btn-large ">
+                Login</button>
+        </p>
+    </form>
 </div>
 
 
+</div>
 
-<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <h4 class="modalHead center-align">Sign in!</h4>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs center-align">
+                    <li class="tab s3"><a href="#newUsr">New User</a></li>
+                    <li class="tab s3"><a href="#exUsr">Existing User</a></li>
+                </ul>
+            </div>
+            <div id="newUsr" class="col s12">
+                <form id="signUp" name="signUp" method="post" action="/api/login">
+                    <label for="Email">Email Address</label>
+                    <input class="text" name="username" type="text" value="" id="signupUsername" required="true" />
+                    <label for="psw">Password</label>
+                    <input name="Password" type="password" name="pws" id="signupPassword" required="true" />
+                    <div class="center-align">
+                        <button class="btn waves-effect waves-teal center-align" type="submit" id="newUser" value="Sign Up">Sign
+                            up!</button>
+                    </div>
+                </form>
+                <p id="result"></p>
+            </div>
+            <div id="exUsr">
+                <form id="signIn" name="signIn" method="post" action="/api/login">
+                    <label for="email">Email Address</label>
+                    <input class="text" name="username" type="text" value="" id="username" />
+                    <label for="Password">Password</label>
+                    <input name="Password" type="password" id="password" />
+                    <div class="center-align">
+                        <button class="btn waves-effect waves-teal center-align" type="submit" id="existingUsr" value="Sign In">
+                            Sign In!</button>
+                    </div>
+                </form>
+                <p id="result"></p>
+            </div>
+        </div>
 
+        <div class="modal-footer center-">
+            <div class="center-align">
+                <a href="/index" class="modal-action modal-close btn larg waves-effect waves-red btn-teal" id="proBtn"
+                    action="/signup" type="submit">Proceede</a>
+            </div>
+        </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/authenticate.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/js/authenticate.js"></script>
