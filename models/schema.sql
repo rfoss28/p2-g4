@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS jkdev2_db;
-CREATE DATABASE jkdev2_db;
+-- DROP DATABASE IF EXISTS jkdev2_db;
+-- CREATE DATABASE jkdev2_db;
 

@@ -1,7 +1,5 @@
-var db = require("../models");
-
-  
-  // get ALL USERs
+var db = require("../models");  
+ 
 module.exports = function (app) {
  
   // get ALL USERS
@@ -32,20 +30,13 @@ module.exports = function (app) {
     });
   });
 
-  // Delete an example by NAME
+  // Delete USER by NAME
   app.delete("/api/delete/:name", function(req, res) {
     db.user.destroy({ where: { user_name: req.params.name } }).then(function(dbuser) {
-
-    });
-  });
-
-
-
-  app.post("/api/users", function (req, res) {
-    db.user.create(req.body).then(function (dbuser) {
       console.log('we hit it');
       res.json(dbuser);
       console.log(dbuser)
+
     });
   });
 
