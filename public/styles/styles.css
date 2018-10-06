@@ -1,3 +1,27 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.medCard {
+  width: 95% !important;
+}
+
+.dataCard {
+  width: 95% !important
+}
+
+/***************************START***************/
+body {
+  background: url("../images/medicine.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#discSect{
+  margin-top: 25vh !important;
+  opacity: 0.7;
+}
+
+#newUser {
+  justify-content: center;
+}
