@@ -155,6 +155,7 @@ $(function() {
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
   $addMedication.on("click", add_input);
 
+  var rxCode = [];
   var rxList = [];
 
   $("#medicInput").on("click", function(event) {
@@ -271,7 +272,7 @@ $(function() {
                 }
                 //Creates sting with the interaction source to add to the interaction string
                 i.interactionPair[0].interactionConcept.map(function(rxNames) {
-                  // i.interactionPair[0].sourceConceptItem.forEach(function(rxNames){
+                 
                   medNames += rxNames.sourceConceptItem.name + " ";
                   // console.log(nameArray);
                 });
@@ -289,14 +290,20 @@ $(function() {
               });
             });
             console.log(interactions);
-            
+
+            var printedMedList="";
+            rxList.forEach(function(medication){
+              printedMedList+= medication + "\r\n";
+            // });
+
 
             $(".medbox")
             .empty()
-            .append(interactions);
+            .append(printedMedList);
         })
 
-            $(".reactions").empty()
+            $(".reactions")
+              .empty()
               .append(interactions);
           })
           .catch(error =>
