@@ -155,7 +155,6 @@ $(function() {
   $exampleList.on("click", ".delete", handleDeleteBtnClick);
   $addMedication.on("click", add_input);
 
-  var rxCode = [];
   var rxList = [];
 
   $("#medicInput").on("click", function(event) {
@@ -290,9 +289,14 @@ $(function() {
               });
             });
             console.log(interactions);
+            
 
-            $(".reactions")
-              .empty()
+            $(".medbox")
+            .empty()
+            .append(interactions);
+        })
+
+            $(".reactions").empty()
               .append(interactions);
           })
           .catch(error =>
