@@ -17,14 +17,29 @@ let user = {
 }
 
 passport.use(new LocalStrategy((username, password, done) => {
-  // find user in database for the given username and password
-  // if err 
-  // done(err)
   console.log('Inside local strategy')
-  
-  //done('invalid password')
-  done(null, user)
-}))
+  console.log('username in local', username)
+  console.log('password in local', password)
+
+  db.user.findOne({
+    where: {
+      user_name: username
+    }
+  }).then((dbUser) => {
+    // If no user/Incorrect password
+    if (!dbUser || dbUser.get('user_password') !== password) {
+      return done(null, false, {
+        message: "Incorrect Login Credentials"
+      });
+    }
+
+    return done(null, dbUser);
+  }).catch(err => {
+    console.error(err)
+  });
+
+}));
+
 
 passport.serializeUser((user, done) => {
   console.log('Serialize User')
@@ -34,9 +49,13 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   console.log('Deserialize User')
   // look up user by id in database
-  done(null, user)
-})
 
+  db.user.findById(id).then((dbUser) => {
+    done(null, dbUser);
+  }).catch(err => {
+    console.error(err)
+  });
+})
 
 
 // Middleware
@@ -53,15 +72,14 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.get("/test", function(req, res) {
-res.send('success test')
+app.get("/test", function (req, res) {
+  res.send('success test')
 })
 
 let checkAuthentication = (req, res, next) => {
   if (req.isAuthenticated()) {
-   return  next();
+    return next();
   }
-
   res.redirect('/index')
 }
 
@@ -69,7 +87,7 @@ app.get('/api/test', checkAuthentication, function (req, res) {
   console.log('Inside secret route')
 
   res.send('User has access to secret route')
-//  res.status(401).send("User does not have access")
+  res.status(401).send("User does not have access")
 });
 
 
@@ -99,14 +117,14 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
- db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
       PORT
     );
   });
- });
+});
 
 module.exports = app;

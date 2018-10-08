@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Krub|Martel|Montserrat|Nanum+Gothic|Roboto+Mono');
+
+body {
+  font-family: 'Montserrat' sans-serif;
+}
+
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -10,18 +17,73 @@
   width: 95% !important
 }
 
-/***************************START***************/
-body {
-  background: url("../images/medicine.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
+.userlog{
+  font-size: 18px;
+  font-family: 'Krub', sans-serif;
+}
+
+.brand-logo {
+  font-family: 22px;
+  font-family:'Martel', serif;
+  font-weight: bold;
+}
+
+.medHead, #reactHead {
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+}
+.reactions {
+  padding-top: 15px;
+  font-family: 'Krub', sans-serif;
+  font-size: 23px;
+  line-height: 28px;
+}
+.medbox {
+  font-family: 'Krub', sans-serif;
+  font-size: 30px;
+}
+
+
+/***************************START**********************/
+
+.header {
+  font-family: 'Martel', serif;
 }
 
 #discSect{
-  margin-top: 25vh !important;
-  opacity: 0.7;
+  margin-top: 5vh !important;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 25px !important;
 }
-
+￼
 #newUser {
   justify-content: center;
 }
+
+.parallax-container {
+  height: 40vh !important;
+}
+
+#medicInput{
+  font-size:20px;
+  margin-left: 19%
+}
+
+.inputHead {
+  font-size: 20px;
+}￼
+
+#reactHead {
+  font-size: 25px !important;
+  font-family: 'Krub', sans-serif !important;
+}
+
+.tabs .tab .indicator {
+  background-color: white !important;
+  font-size: 30px;
+}
+.tabs .logins {
+  color: white;
+  font-size: 30px;
+}
+

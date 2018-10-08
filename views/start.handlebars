@@ -1,14 +1,18 @@
-<div class="container">
-    <div class="row">
-        <h3 class="header center-align">RXReactions</h3>
+<div class="row">
+
+    <div class="parallax-container">
+        <h3 class="header center-align">MedCheck</h3>
+        <div class="parallax"><img src="../images/bottle.png"></div>
     </div>
 </div>
-<!--image!-->
 
-<div class="col s12 m8 l6" id="discSect">
-    <div class="container">
-        <div class="card-title center-align" id="discBox">
-            <h4 class="center-align"> {{disc}}</h4>
+<div class="container">
+<div class="section grey lighten-3">
+    <div class="col s12 m8 l6" id="discSect">
+        <div class="container">
+            <div class="card-title center-align" id="discBox">
+                <p class="center-align"> {{disc}}</p>
+            </div>
         </div>
     </div>
 
@@ -17,51 +21,55 @@
         <p>
             <label>
                 <input type="checkbox" name="checkbox" class="filled-in check center-align" />
-                <span class="white-text">Agree</span>
-            </label>
-            <button type="submit" data-target="modal1" id="logBtn" class="waves-effect waves-light truncate btn modal-trigger cyan lighten-1 btn-large ">
+                <span class="black-text">Agree</span>
+            </label>  
+        </p> 
+         <button type="submit" data-target="modal1" id="logBtn" class="waves-effect waves-light truncate btn modal-trigger cyan lighten-1 btn-large ">
                 Login</button>
-        </p>
     </form>
 </div>
 
 
-</div>
 
 <div id="modal1" class="modal">
-    <h4 class="modalHead center-align">Sign in!</h4>
+  
     <div class="modal-content">
         <div class="row">
             <div class="col s12">
                 <ul class="tabs center-align">
-                    <li class="tab s3"><a href="#newUsr">New User</a></li>
-                    <li class="tab s3"><a href="#exUsr">Existing User</a></li>
+                    <li class="tab s3"><a href="#newUsr" class="logins">Sign up</a></li>
+                    <li class="tab s3"><a href="#exUsr" class="logins">Login</a></li>
                 </ul>
             </div>
             <div id="newUsr" class="col s12">
-                <form id="signUp" name="signUp" method="post" action="/api/login">
-                    <label for="Email">Email Address</label>
-                    <input class="text" name="username" type="text" value="" id="signupUsername" required="true" />
-                    <label for="psw">Password</label>
-                    <input name="Password" type="password" name="pws" id="signupPassword" required="true" />
-                    <div class="center-align">
-                        <button class="btn waves-effect waves-teal center-align" type="submit" id="newUser" value="Sign Up">Sign
-                            up!</button>
-                    </div>
-                </form>
+                <div class="container">
+                    <form id="signUp" name="signUp" method="post" action="/signup">
+                        <label for="Email">username</label>
+                        <input class="text" name="username" type="text" value="" id="signupUsername" required="true" />
+                        <label for="psw">Password</label>
+                        <input name="Password" type="password" name="pws" id="signupPassword" required="true" />
+                        <div class="center-align">
+                            <button class="btn waves-effect waves-teal center-align" type="submit" id="newUser" value="Sign Up">Sign
+                                up!</button>
+                        </div>
+                    </form>
+                </div>
                 <p id="result"></p>
             </div>
             <div id="exUsr">
-                <form id="signIn" name="signIn" method="post" action="/api/login">
-                    <label for="email">Email Address</label>
-                    <input class="text" name="username" type="text" value="" id="username" />
-                    <label for="Password">Password</label>
-                    <input name="Password" type="password" id="password" />
-                    <div class="center-align">
-                        <button class="btn waves-effect waves-teal center-align" type="submit" id="existingUsr" value="Sign In">
-                            Sign In!</button>
-                    </div>
-                </form>
+                <div class="container">
+                    <form id="signIn" name="signIn" method="post" action="/login">
+                        <label for="email">Email Address</label>
+                        <input class="text" name="username" type="text" value="" id="userName" />
+                        <label for="Password">Password</label>
+                        <input name="Password" type="password" id="password" />
+                        <div class="center-align">
+                            <button class="btn waves-effect waves-teal center-align" type="validate" id="existingUsr"
+                                value="Sign In">
+                                Sign In!</button>
+                        </div>
+                    </form>
+                </div>
                 <p id="result"></p>
             </div>
         </div>
@@ -72,6 +80,8 @@
                     action="/signup" type="submit">Proceede</a>
             </div>
         </div>
+    </div>
+</div>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/js/authenticate.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/authenticate.js"></script>
