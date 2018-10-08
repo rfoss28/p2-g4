@@ -1,25 +1,29 @@
-# UNH Bootcamp Project 2 - Group 4
-(John K, Ryan, Jake P)
+## Codename: RxCHECK
 
-## Codename: RxCheck
+# UNH Full Stack Coding Bootcamp, Project 2 - Group 4
+(Jake Plaisted, Ryan Foss, John Kerr)
 
+## DISCLAIMER
+_The information contained herein should **NOT** be used as a substitute for the advice of an appropriately qualified and licensed physician or other health care provider._ 
 
-- Jake P git test   #1
-- John Kerr git test #4
-- Ryan Foss git test #1
+**The information provided here is for informational purposes only.** This tool may not cover all possible drug interactions. _Please check with a physician if you have health questions or concerns._ Although we attempt to provide accurate and up-to-date information, no guarantee is made to that effect.
 
-# NOTE: THIS IS JUST A MOCK DESIGN TO GET SOME BASIC FUNCTIONALITY WORKING, WILL IMPROVE. 
+# Description
+RxCHECK is a server-side application allowing a user to see any serious interactions among his/her current medications; User can create an account, add a list of current medications associated with the account, and then receive an up-to-date description of any serious warnings (provide by the National Institute of Health's API, RxNav).
 
-## JAKE - mock - design push
-in this push, I have added a start page,that displays our current disclaimer. The user has to click check box to go any further.
-the check box causes a button to appear, and when this button is clicked a modal is popped that stuf to sign in. (passport.js not or input sanitization done), then when the submit credintials button is clicked you're brought to the original "index.handlebars" page. Here is where you can add up to 5 medications. 
+# Technologies used
+- Node & Express servers
+- MySQL database
+- Sequelize 
+- Materialize
+- Handlebars
+- Passport.js
+- jQuery
+- Ajax
 
-# Changes to html routes
-
-to enable a start page, I had to change the "/" route, so that it sends the user to the start.handlebars page, I then changed the index route to "/index". 
-
-# Other changes
-added neccisary jQuery code to index.js, primarily the event listener that allows / limits the user to adding more medications
-
-added authenticate.js which is the javascript file that is used for the start.handlebars page
-right now this file has the event listener, to show the login button as long as the checkbox has been "checked"
+# Installation & use
+- Navigate to the linked URL here: (_waiting for deployment_)
+- Create an account
+- Add a list of medications / pharmaceuticals
+- Submit
+- Read interactions text for any warnings
