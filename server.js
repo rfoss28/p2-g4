@@ -72,7 +72,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.get("/test", function (req, res) {
+app.get("./test", function (req, res) {
   res.send('success test')
 })
 
